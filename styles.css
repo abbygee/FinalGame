@@ -1,8 +1,9 @@
-#board{
-    margin-left: auto;
-    margin-right: auto;
+html, body {
+    margin: 0;
+    padding: 0;
+}
+CANVAS {
     display: block;
-    height: 600px;
-    width: 600px;
-    border: solid 2px black;
+    margin: auto;
+    border: solid black 3px;
 }
