@@ -1,9 +1,15 @@
-html, body {
-    margin: 0;
-    padding: 0;
-}
-CANVAS {
+#game {
     display: block;
     margin: auto;
-    border: solid black 3px;
+}
+#score {
+    text-align: center;
+    font-size: 100px;
+    font-family: Papyrus;
+}
+
+header{
+    text-align: center;
+    font-size: 40px;
+    font-family: Papyrus;
 }
