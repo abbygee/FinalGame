@@ -1,11 +1,9 @@
 class Snake {
     constructor() {
         this.body = [];
-        this.body[0] = new component(20, 20, "blue", 300, 300);
-        this.xdir = 0;
-        this.ydir = 0;
-        //this.len = 0;
-        //this.speed = 1
+        this.body[0] = new Component(20, 20, "blue", 300, 300);
+        this.body[1] = new Component(20, 20, "blue", 300, 287);
+        this.len = 0;
     }
 
     // setDir(x, y) {
@@ -13,16 +11,17 @@ class Snake {
     //     this.ydir = y;
     // }
     //
-    // update() {
-    //     var head = this.body[this.body.length-1].copy();
-    //     this.body.shift();
-    //     head[0] += this.xdir;
-    //     head[1] += this.ydir;
-    //     this.body.push(head);
+    // change() {
+    //     let head = JSON.parse(JSON.stringify(this.body[this.body.length-1]));
+    //     // this.body.shift();
+    //     head.x += this.xdir;
+    //     head.y += this.ydir;
+    //     console.log(head);
+    //     // this.body.push(head);
     // }
     //
     // grow() {
-    //     var head = this.body[this.body.length-1].copy();
+    //     let head = JSON.parse(JSON.stringify(this.body[this.body.length-1]));
     //     this.len++;
     //     this.body.push(head);
     // }
@@ -42,10 +41,10 @@ class Snake {
     //     return false;
     // }
     //
-    // eat(pos) {
-    //     var x = this.body[this.body.length-1][0];
-    //     var y = this.body[this.body.length-1][1];
-    //     if(x === pos[0] && y === pos[1]) {
+    // eat(posX, posY) {
+    //     var x = this.body[this.body.length-1][x];
+    //     var y = this.body[this.body.length-1][y];
+    //     if(x === posX && y === posY) {
     //         this.grow();
     //         return true;
     //     }
@@ -59,5 +58,4 @@ class Snake {
     //         rect(this.body[i][0], this.body[i][1], 1, 1)
     //     }
     // }
-
 }
