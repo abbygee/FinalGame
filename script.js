@@ -30,13 +30,12 @@ function main() {
 
     // If the game ended return early to stop game
     if (didGameEnd()) return;
-    setTimeout(function onTick() {
+    setTimeout(function eachFrame() {
         changingDirection = false;
         clearCanvas();
         drawFood();
         advanceSnake();
         drawSnake();
-        // Call game again
         main();
     }, GAME_SPEED)
 }
