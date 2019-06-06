@@ -4,12 +4,18 @@
 }
 #score {
     text-align: center;
+    color: white;
     font-size: 100px;
-    font-family: Papyrus;
+    font-family: 'Baloo', sans-serif;
 }
 
 header{
+    color: white;
     text-align: center;
     font-size: 40px;
-    font-family: Papyrus;
+    font-family: 'Baloo', sans-serif;
+}
+
+body{
+    background-color: black;
 }
