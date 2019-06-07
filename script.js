@@ -23,8 +23,10 @@ function main() {
     ctx = gameCanvas.getContext("2d");
     document.addEventListener("keydown", changeDirection);
 
-    // If the game ended return early to stop game
-    if (didGameEnd()) return;
+    if(didGameEnd()){
+        document.getElementById("restart").style.visibility = "visible";
+    }
+
     setTimeout(function eachFrame() {
         changingDirection = false;
         clearCanvas();
@@ -49,7 +51,7 @@ function drawFood() {
 function advanceSnake() {
     // Create the new Snake's head
     var head = {x: snake[0].x + dx, y: snake[0].y + dy};
-    // Add the new head to the beginning of snake body
+    // make the new head to the beginning of snake body
     snake.unshift(head);
     var didEatFood = snake[0].x === foodX && snake[0].y === foodY;
     if (didEatFood) {
@@ -57,7 +59,7 @@ function advanceSnake() {
         document.getElementById('score').innerHTML = score;
         createFood();
     } else {
-        // Remove the last part of snake body
+        // delete last part of snake body
         snake.pop();
     }
 }

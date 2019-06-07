@@ -17,5 +17,10 @@ header{
 }
 
 body{
-    background-color: black;
+    background-color: lightblue;
+    text-align: center;
+}
+
+#restart{
+    visibility: hidden;
 }
