@@ -14,17 +14,35 @@ var foodY;
 var dx = 10;
 var dy = 0;
 
-
 var gameCanvas;
 var ctx;
+var dead = false;
+
+function resetGame(){
+    document.getElementById("restart").style.visibility = "hidden";
+    dead = false;
+    snake = [
+        {x: 150, y: 150},
+        {x: 140, y: 150},
+        {x: 130, y: 150},
+        {x: 120, y: 150},
+        {x: 110, y: 150}
+    ];
+    score = 0;
+    document.getElementById('score').innerHTML = score;
+    main();
+    createFood();
+}
 
 function main() {
     gameCanvas = document.getElementById("game");
     ctx = gameCanvas.getContext("2d");
     document.addEventListener("keydown", changeDirection);
 
-    if(didGameEnd()){
+    didGameEnd();
+    if(dead === true){
         document.getElementById("restart").style.visibility = "visible";
+        return;
     }
 
     setTimeout(function eachFrame() {
@@ -55,7 +73,7 @@ function advanceSnake() {
     snake.unshift(head);
     var didEatFood = snake[0].x === foodX && snake[0].y === foodY;
     if (didEatFood) {
-        score += 1;
+        score += 10;
         document.getElementById('score').innerHTML = score;
         createFood();
     } else {
@@ -66,22 +84,26 @@ function advanceSnake() {
 
 function didGameEnd() {
     for (var i = 4; i < snake.length; i++) {
-        if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true
+        if (snake[i].x === snake[0].x && snake[i].y === snake[0].y){
+            dead = true;
+        }
     }
     var hitLeftWall = snake[0].x < 0;
     var hitRightWall = snake[0].x > gameCanvas.width - 10;
     var hitToptWall = snake[0].y < 0;
     var hitBottomWall = snake[0].y > gameCanvas.height - 10;
-    return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
+    if(hitLeftWall || hitRightWall || hitToptWall || hitBottomWall){
+        dead = true;
+    }
 }
 
-function randomTen(min, max) {
+function randomPoint(min, max) {
     return Math.round((Math.random() * (max-min) + min) / 10) * 10;
 }
 
 function createFood() {
-    foodX = randomTen(0, gameCanvas.width - 10);
-    foodY = randomTen(0, gameCanvas.height - 10);
+    foodX = randomPoint(0, gameCanvas.width - 10);
+    foodY = randomPoint(0, gameCanvas.height - 10);
     // if the new food location is where the snake currently is, generate a new food location
     snake.forEach(function isFoodOnSnake(part) {
         if (part.x === foodX && part.y === foodY) createFood();
@@ -135,5 +157,3 @@ function changeDirection(event) {
         dy = 10;
     }
 }
-
-//oops
