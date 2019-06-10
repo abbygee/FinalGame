@@ -7,6 +7,7 @@ var snake = [
     {x: 120, y: 150},
     {x: 110, y: 150}
 ];
+var scores = [];
 var score = 0;
 var changingDirection = false;
 var foodX;
@@ -19,6 +20,7 @@ var ctx;
 var dead = false;
 
 function resetGame(){
+    createLB();
     document.getElementById("restart").style.visibility = "hidden";
     dead = false;
     snake = [
@@ -28,6 +30,8 @@ function resetGame(){
         {x: 120, y: 150},
         {x: 110, y: 150}
     ];
+    dx = 10;
+    dy = 0;
     score = 0;
     document.getElementById('score').innerHTML = score;
     main();
@@ -42,6 +46,7 @@ function main() {
     didGameEnd();
     if(dead === true){
         document.getElementById("restart").style.visibility = "visible";
+        scores.push(score);
         return;
     }
 
@@ -156,4 +161,35 @@ function changeDirection(event) {
         dx = 0;
         dy = 10;
     }
+}
+
+function createLB(){
+    var topScores = [];
+    selectionSort(scores);
+    for(var i = 0; i < 8; i++){
+        topScores.push("<div class='scores'> " + (i+1) + ". " + scores[i] + "</div>");
+    }
+
+    document.getElementById("board").innerHTML = topScores;
+}
+
+function swap(array, i, j) {
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+}
+
+function selectionSort(array) {
+    for(var i = 0; i < array.length; i++) {
+        var max = i;
+        for(var j = i + 1; j < array.length; j++) {
+            if(array[j] > array[max]) {
+                max = j;
+            }
+        }
+        if(i !== max) {
+            swap(array, i, max);
+        }
+    }
+    return array;
 }

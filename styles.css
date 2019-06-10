@@ -49,3 +49,31 @@ body{
     background-color: #555555;
     color: white;
 }
+
+h1 {
+    position: fixed;
+    bottom: 600px;
+    color: white;
+    text-align: left;
+    font-size: 30px;
+    font-family: 'Baloo', sans-serif;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+#board {
+    position: fixed;
+    bottom: 150px;
+    color: white;
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Baloo', sans-serif;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
